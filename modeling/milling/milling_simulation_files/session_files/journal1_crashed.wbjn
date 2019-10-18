@@ -1,0 +1,109 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+DesignModeler.CreateGeometrySystemWithActiveCAD(
+    FilePath=r"E:\ANSYS\milling\milling_assembly.SLDASM",
+    PlugInName="SOLIDWORKS[13364]")
+template1 = GetTemplate(
+    TemplateName="Explicit Dynamics",
+    Solver="AUTODYN")
+system1 = GetSystem(Name="Geometry")
+geometryComponent1 = system1.GetComponent(Name="Geometry")
+system2 = template1.CreateSystem(
+    ComponentsToShare=[geometryComponent1],
+    Position="Right",
+    RelativeTo=system1)
+modelComponent1 = system2.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system2.GetContainer(ComponentName="Model")
+model1.Edit()
+engineeringData1 = system2.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.CreateMaterial(Name="tool")
+matl1.SetSuppression(Suppressed=True)
+matl1.SetSuppression(Suppressed=False)
+matl1.SetAsDefaultSolidForModel()
+matlProp1 = matl1.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matl1.SetAsDefaultSolidForModel(Default=False)
+favorites1 = EngData.LoadFavoriteItems()
+library1 = EngData.OpenLibrary(
+    Name="General Materials",
+    Source="General_Materials.xml")
+library2 = EngData.OpenLibrary(
+    Name="Geomechanical Materials",
+    Source="GeoMechanical_Materials.xml")
+library3 = EngData.OpenLibrary(
+    Name="Explicit Materials",
+    Source="Explicit_Materials.xml")
+matl2 = engineeringData1.ImportMaterial(
+    Name="AL 6061-T6",
+    Source="Explicit_Materials.xml")
+matl3 = engineeringData1.ImportMaterial(
+    Name="STEEL 1006",
+    Source="Explicit_Materials.xml")
+EngData.EnableFilter(Enable=False)
+EngData.EnableFilter()
+EngData.EnableFilter(Enable=False)
+matl1.Delete()
+material1 = engineeringData1.GetMaterial(Name="Structural Steel")
+material1.DisplayName = "TOOL"
+matlProp2 = material1.GetProperty(Name="Density")
+matlProp2.SetData(
+    Variables=["Density"],
+    Values=[["8300 [kg m^-3]"]])
+matlProp3 = material1.GetProperty(Name="Elasticity")
+matlProp3.SetData(
+    Variables=["Young's Modulus"],
+    Values=[["800000000000 [Pa]"]])
+matlProp3.SetData(
+    Variables=["Poisson's Ratio"],
+    Values=[["0.2"]])
+matlProp4 = material1.GetProperty(Name="Specific Heat")
+matlProp4.SetData(
+    Variables=["Specific Heat"],
+    Values=[["203 [J kg^-1 C^-1]"]])
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Exit()
+modelComponent1.Refresh()
+model1.Exit()
+model1.Edit()
+model1.Exit()
+Save(Overwrite=True)
+model1.Edit()
+model1.Exit()
+geometry1.Edit()
+geometry1.Exit()
+Update()
+model1.Edit()
+model1.Exit()
+geometry1.Edit(IsSpaceClaimGeometry=True)
+geometry1.Exit()
+Refresh()
+geometry1.Edit(IsSpaceClaimGeometry=True)
+geometry1.Exit()
+geometry1.SetFile(FilePath="E:/ANSYS/milling/milling_assembly.SLDASM")
+geometry1.SetFile(FilePath="E:/ANSYS/milling/milling_assembly.SLDASM")
+geometry1.Edit()
+geometry1.Exit()
+geometryComponent1.Update(AllDependencies=True)
+geometry1.Edit()
+geometry1.Exit()
+geometry1.Edit()
+geometry1.Exit()
+geometry1.SetFile(FilePath="E:/ANSYS/milling/milling_assemblyV2.SLDASM")
+geometryComponent1.UpdateUpstreamComponents()
+geometryComponent1.Update(AllDependencies=True)
+geometry1.Edit()
+Save(Overwrite=True)
+Save(Overwrite=True)
+Refresh()
+Update()
+model1.Edit()
+geometry1.Exit()
+template2 = GetTemplate(TemplateName="Maxwell2D Design")
+system3 = template2.CreateSystem()
+system4 = template2.CreateSystem(
+    Position="Right",
+    RelativeTo=system2)

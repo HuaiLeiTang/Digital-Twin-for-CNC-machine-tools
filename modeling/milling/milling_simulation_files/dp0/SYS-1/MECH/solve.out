@@ -1,0 +1,105 @@
+    *-------------------------------------------------------------*
+    |                                                             |
+    |  W E L C O M E   T O   T H E   A N S Y S (R)  P R O G R A M |
+    |                                                             |
+    *-------------------------------------------------------------*
+    ***************************************************************
+    *                  ANSYS 19.2 LEGAL NOTICES                   *
+    ***************************************************************
+    *                                                             *
+    * Copyright 1971-2017 SAS IP, Inc.  All rights reserved.      *
+    * Unauthorized use, distribution or duplication is            *
+    * prohibited.                                                 *
+    * ANSYS is a registered trademark of ANSYS, Inc or its        *
+    * subsidiaries in the United States or other countries.       *
+    *                                                             *
+    * ANSYS, Inc. is UL registered                                *
+    * ISO 9001:2008 Companies.                                    *
+    *                                                             *
+    ***************************************************************
+    *                                                             *
+    * THIS ANSYS SOFTWARE PRODUCT AND PROGRAM DOCUMENTATION       *
+    * INCLUDE TRADE SECRETS AND CONFIDENTIAL AND PROPRIETARY      *
+    * PRODUCTS OF ANSYS, INC., ITS SUBSIDIARIES, OR LICENSORS.    *
+    * The software products and documentation are furnished by    *
+    * ANSYS, Inc. or its subsidiaries under a software license    *
+    * agreement that contains provisions concerning               *
+    * non-disclosure, copying, length and nature of use,          *
+    * compliance with exporting laws, warranties, disclaimers,    *
+    * limitations of liability, and remedies, and other           *
+    * provisions.  The software products and documentation may be *
+    * used, disclosed, transferred, or copied only in accordance  *
+    * with the terms and conditions of that software license      *
+    * agreement.                                                  *
+    *                                                             *
+    * See the ANSYS, Inc. online documentation or the ANSYS, Inc. *
+    * documentation CD for the complete Legal Notice.             *
+    *                                                             *
+    ***************************************************************
+    *                                                             *
+    * This product is subject to US laws governing export and     *
+    * re-export.                                                  *
+    *                                                             *
+    * For U.S. Government users, except as specifically granted   *
+    * by the ANSYS, Inc. software license agreement, the use,     *
+    * duplication, or disclosure by the United States Government  *
+    * is subject to restrictions stated in the ANSYS, Inc.        *
+    * software license agreement and FAR 12.212 (for non-DOD      *
+    * licenses).                                                  *
+    *                                                             *
+    ***************************************************************
+    Version No 19,2018,220,1
+
+    Creating Internal Loads
+    Creating Flexible Bodies Internal Drivers
+    Updating Loads and Drivers Based On Internal Joint Representation
+    Updating Stops Based On Internal Joint Representation
+    Creating Stops Contact Points
+    Updating Relations Based On Internal Joint Representation
+    Initializing Transient Analysis
+
+    ___________________________________________________________________________________________________________________________________________________________________________
+    Starting assembly simulation
+
+    Model does not contain any degree of freedom.
+    Model does not contain any degree of freedom.
+
+    _________________________________________________________________________
+    Starting transient simulation
+
+    Using Runge-Kutta 4 time integration
+
+    Model Summary:
+
+    Number of effective bodies: 1
+    Total Number of Joints: 0 (0 based on degrees of freedom, 0 based on constraint equations)
+
+    Number of Physical Degrees of Freedom: 0
+
+    _________________________________________________________________________
+
+    Current Time: 0 Current time step 0.01
+    Current Time: 0.42 Current time step 0.05
+    Current Time: 0.92 Current time step 0.05
+
+    ___________________________________________________________________________________________________________________________________________________________________________
+
+    Total number of time steps: 22
+    Average time step: 0.0454545
+
+    Number of rejected time steps: 0
+    Number of discontinuities: 0
+    Number of saved transient configurations: 23
+    Maximum relative error: 0 (%)
+    Number of position correction iterations: 1
+    Number of velocity correction steps: 0
+
+    End of Transient Simulation. CPU Time 0.109375 Elapsed Time 0.071
+
+
+    ___________________________________________________________________________________________________________________________________________________________________________
+
+    Analysis of model redundancies:
+    No Redundancies detected in the model
+
+

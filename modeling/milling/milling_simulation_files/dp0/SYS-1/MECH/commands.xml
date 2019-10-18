@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<jobCommands version="2" wait="True">
+  <cores>1</cores>
+  <nodeExclusive>false</nodeExclusive>
+  <memoryPerCore>0</memoryPerCore>
+  <distributed>true</distributed>
+  <localScratchWindowsEnabled>true</localScratchWindowsEnabled>
+  <command name="Multi-Body Dynamics Solver">
+    <application>
+      <app platform="winx64">%AWP_ROOT192%\SEC\SolverExecutionController\runsec.bat</app>
+      <app platform="linx64">%AWP_ROOT192%/SEC/SolverExecutionController/runsec.sh</app>
+    </application>
+  </command>
+</jobCommands>

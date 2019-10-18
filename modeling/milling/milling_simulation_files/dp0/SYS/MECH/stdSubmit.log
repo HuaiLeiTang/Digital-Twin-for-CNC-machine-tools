@@ -1,0 +1,2 @@
+Running Solver : C:\Program Files\ANSYS Inc\v192\aisol\bin\winx64\Ansys.Solvers.Explicit.Launcher.exe -input ".\admodel_0.ad" -exd -double -machines localhost:4
+admodel

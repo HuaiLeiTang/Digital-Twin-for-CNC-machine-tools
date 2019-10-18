@@ -1,0 +1,78 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+system1 = GetSystem(Name="SYS")
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+system2 = GetSystem(Name="RBU")
+system2.Delete()
+template1 = GetTemplate(TemplateName="Rigid Dynamics")
+system3 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+engineeringDataComponent1 = system3.GetComponent(Name="Engineering Data")
+engineeringDataComponent2 = system1.GetComponent(Name="Engineering Data")
+engineeringDataComponent1.ReplaceWithShare(
+    TargetSystem=system3,
+    ComponentToShare=engineeringDataComponent2,
+    SourceSystem=system1)
+geometryComponent1 = system3.GetComponent(Name="Geometry")
+geometryComponent2 = system1.GetComponent(Name="Geometry")
+geometryComponent1.ReplaceWithShare(
+    TargetSystem=system3,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system1)
+modelComponent1 = system3.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model2 = system3.GetContainer(ComponentName="Model")
+model2.Edit()
+Save(Overwrite=True)
+model2.Exit()
+template2 = GetTemplate(TemplateName="Simplorer Design")
+system4 = template2.CreateSystem(
+    Position="Right",
+    RelativeTo=system3)
+setupComponent1 = system3.GetComponent(Name="Setup")
+simplorerSetupComponent1 = system4.GetComponent(Name="SimplorerSetup")
+setupComponent1.TransferData(TargetComponent=simplorerSetupComponent1)
+Save(Overwrite=True)
+setupComponent1.TransferData(TargetComponent=simplorerSetupComponent1)
+model1.Exit()
+Save(Overwrite=True)
+model2.Edit()
+template3 = GetTemplate(
+    TemplateName="Transient Thermal",
+    Solver="ANSYS")
+system5 = template3.CreateSystem(
+    Position="Below",
+    RelativeTo=system3)
+engineeringDataComponent3 = system5.GetComponent(Name="Engineering Data")
+engineeringDataComponent3.ReplaceWithShare(
+    TargetSystem=system5,
+    ComponentToShare=engineeringDataComponent2,
+    SourceSystem=system1)
+geometryComponent3 = system5.GetComponent(Name="Geometry")
+geometryComponent3.ReplaceWithShare(
+    TargetSystem=system5,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system1)
+modelComponent2 = system5.GetComponent(Name="Model")
+modelComponent2.Refresh()
+model3 = system5.GetContainer(ComponentName="Model")
+model3.Edit()
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+material1 = engineeringData1.GetMaterial(Name="AL 6061-T6")
+matlProp1 = material1.CreateProperty(
+    Name="Thermal Conductivity",
+    Behavior="Isotropic",
+    Qualifiers={"Definition": "", "Behavior": "Isotropic"})
+Save(Overwrite=True)
+model3.Exit()
+Save(Overwrite=True)
+model2.Exit()
+ClearMessages()
+system6 = GetSystem(Name="Geometry")
+geometry1 = system6.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Exit()
+model1.Edit()

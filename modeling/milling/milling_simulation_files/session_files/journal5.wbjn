@@ -1,0 +1,28 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+system1 = GetSystem(Name="Geometry")
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+template1 = GetTemplate(TemplateName="Rom Builder")
+system2 = GetSystem(Name="RBU")
+system3 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system2)
+geometry1.Exit()
+geometry1.SetFile(
+    FilePath="E:/ANSYS/milling/milling_assemblyV2.SLDASM",
+    PlugInName="SOLIDWORKS[4908]")
+geometry1.Edit()
+geometry1.Exit()
+system3.Delete()
+system2.Delete()
+system4 = GetSystem(Name="SYS")
+modelComponent1 = system4.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system4.GetContainer(ComponentName="Model")
+model1.Edit()
+system5 = template1.CreateSystem()
+Save(Overwrite=True)
+model1.Exit()
+Save(Overwrite=True)

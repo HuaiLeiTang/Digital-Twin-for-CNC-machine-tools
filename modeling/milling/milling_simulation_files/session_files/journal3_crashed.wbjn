@@ -1,0 +1,11 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+system1 = GetSystem(Name="SYS")
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+template1 = GetTemplate(TemplateName="Simplorer Design")
+system2 = GetSystem(Name="Geometry")
+system3 = template1.CreateSystem(
+    Position="Below",
+    RelativeTo=system2)

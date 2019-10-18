@@ -1,0 +1,152 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+system1 = GetSystem(Name="RBU")
+system1.Delete()
+system2 = GetSystem(Name="SYS")
+model1 = system2.GetContainer(ComponentName="Model")
+model1.Edit()
+favorites1 = EngData.LoadFavoriteItems()
+library1 = EngData.OpenLibrary(
+    Name="Composite Materials",
+    Source="Composite_Materials.xml")
+library2 = EngData.OpenLibrary(
+    Name="Explicit Materials",
+    Source="Explicit_Materials.xml")
+library3 = EngData.OpenLibrary(
+    Name="General Non-linear Materials",
+    Source="General Materials Non-linear.xml")
+library4 = EngData.OpenLibrary(
+    Name="General Materials",
+    Source="General_Materials.xml")
+library5 = EngData.OpenLibrary(
+    Name="Fluid Materials",
+    Source="Fluid_Materials.xml")
+EngData.EnableFilter(Enable=False)
+EngData.EnableFilter()
+EngData.EnableFilter(Enable=False)
+EngData.EnableFilter()
+EngData.EnableFilter(Enable=False)
+library6 = EngData.OpenLibrary(
+    Name="Additive Manufacturing Materials",
+    Source="Additive_Manufacturing_Materials.xml")
+library7 = EngData.OpenLibrary(
+    Name="Thermal Materials",
+    Source="Thermal_Materials.xml")
+engineeringData1 = system2.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.CreateMaterial(Name="YG8")
+matlProp1 = matl1.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp1.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["15000 [kg m^-3]"]])
+material1 = engineeringData1.GetMaterial(Name="TOOL")
+matlProp2 = material1.GetProperty(Name="Strain-Life Parameters")
+matlProp2.SetQualifier(
+    Qualifier="Display Curve Type",
+    Value="Cyclic Stress-Strain")
+matlProp2.SetQualifier(
+    Qualifier="Display Curve Type",
+    Value="Strain-Life")
+material2 = engineeringData1.GetMaterial(Name="AL 6061-T6")
+matlProp3 = material2.CreateProperty(
+    Name="S-N Curve",
+    Definition="Bilinear",
+    Qualifiers={"Definition": "Bilinear", "Behavior": ""})
+matlProp4 = material2.CreateProperty(
+    Name="Strain-Life Parameters",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp4.Delete()
+matlProp3.Delete(Definition="Bilinear")
+matl2 = engineeringData1.ImportMaterial(
+    Name="Structural Steel",
+    Source="General_Materials.xml")
+EngData.EnableFilter()
+matl2.DisplayName = "TOOL2"
+matlProp5 = matl2.GetProperty(Name="Density")
+matlProp5.SetData(
+    Variables=["Density"],
+    Values=[["15000 [kg m^-3]"]])
+matlProp6 = matl2.GetProperty(Name="Elasticity")
+matlProp6.SetData(
+    Variables=["Poisson's Ratio"],
+    Values=[["0.25"]])
+materialPropertyData1 = matlProp6.GetPropertyData(
+    Name="Elasticity",
+    Qualifiers={"Definition": "", "Behavior": "Isotropic", "Derive from": "Young's Modulus and Poisson's Ratio"})
+PropertyDataVariable1 = materialPropertyData1.CreateVariable(
+    Name="Shear Angle",
+    Qualifiers={"Field Variable": "_FVShearAngle", "Field Units": "degree", "Default Data": "0", "Lower Limit": "Program Controlled", "Upper Limit": "Program Controlled"},
+    CustomData={"Independent": "True", "Quantity Type": "Angle"})
+matl2.Delete()
+matlProp7 = material2.GetProperty(Name="Steinberg Guinan Strength")
+matlProp7.SetData(
+    Variables=["Maximum Yield Stress Ymax"],
+    Values=[["68000000 [Pa]"]])
+matlProp7.SetData(
+    Variables=["Initial Yield Stress Y"],
+    Values=[["29000000 [Pa]"]])
+matlProp7.SetData(
+    Variables=["Hardening Constant B"],
+    Values=[["80"]])
+matlProp8 = material2.GetProperty(Name="Shear Modulus")
+matlProp8.SetData(
+    Variables=["Shear Modulus"],
+    Values=[["2760000000 [Pa]"]])
+system2.Update(AllDependencies=True)
+model1.Edit()
+template1 = GetTemplate(TemplateName="Simplorer Design")
+system3 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system2)
+template2 = GetTemplate(TemplateName="Rigid Dynamics")
+system4 = template2.CreateSystem(
+    Position="Right",
+    RelativeTo=system3)
+geometryComponent1 = system4.GetComponent(Name="Geometry")
+system5 = GetSystem(Name="Geometry")
+geometryComponent2 = system5.GetComponent(Name="Geometry")
+geometryComponent1.ReplaceWithShare(
+    TargetSystem=system4,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system5)
+modelComponent1 = system4.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model2 = system4.GetContainer(ComponentName="Model")
+model2.Edit()
+system6 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system4)
+setupComponent1 = system4.GetComponent(Name="Setup")
+simplorerSetupComponent1 = system6.GetComponent(Name="SimplorerSetup")
+setupComponent1.TransferData(TargetComponent=simplorerSetupComponent1)
+system6.Delete()
+system4.Delete()
+system3.Delete()
+template3 = GetTemplate(
+    TemplateName="Transient Structural",
+    Solver="ANSYS")
+system7 = template3.CreateSystem(
+    Position="Right",
+    RelativeTo=system2)
+geometryComponent3 = system7.GetComponent(Name="Geometry")
+geometryComponent3.ReplaceWithShare(
+    TargetSystem=system7,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system5)
+system8 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system7)
+setupComponent2 = system7.GetComponent(Name="Setup")
+simplorerSetupComponent2 = system8.GetComponent(Name="SimplorerSetup")
+setupComponent2.TransferData(TargetComponent=simplorerSetupComponent2)
+system7.Delete()
+system8.Delete()
+matl3 = engineeringData1.ImportMaterial(
+    Name="Air(Atmospheric)",
+    Source="Explicit_Materials.xml")
+matl4 = engineeringData1.ImportMaterial(
+    Name="ALUMINUM",
+    Source="Explicit_Materials.xml")

@@ -1,0 +1,17 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+system1 = GetSystem(Name="SYS")
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Clean()
+modelComponent1.Reset()
+modelComponent1.Refresh()
+model1.Edit()
+Refresh()
+Update()
+template1 = GetTemplate(TemplateName="Rom Builder")
+system2 = template1.CreateSystem()
+Save(Overwrite=True)
+model1.Exit()

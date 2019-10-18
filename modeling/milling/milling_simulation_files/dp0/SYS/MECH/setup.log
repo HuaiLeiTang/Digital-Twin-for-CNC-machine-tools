@@ -1,0 +1,53 @@
+		AUTODYN PRE-SOLVER SETUP STATUS REPORT
+
+Initialising model.........Complete
+Analysis settings transferred.
+Retrieving mesh ......Complete.
+Retrieving Cross Sections ......Complete.
+Retrieving Variable Shell Thickness ......Complete.
+Retrieving Contacts .....Complete.
+Retrieving Mesh Data .....
+		Retrieving nodal data .....
+			Found 6206 nodes.
+		Retrieving elemental size data .....
+			Found 22041 elements.
+Mesh Data retrieval complete.
+Retrieving Coordinate Systems .....Complete.
+Retrieving Initial Conditions .....Complete.
+Retrieving Parts count.....Complete.
+Retrieving Materials .....
+Starting transfer of material TOOL
+Material TOOL loaded successfully.
+Starting transfer of material AL 6061-T6
+Loading shock equation of state data.
+Shock equation of state complete.
+Loading Steinberg-Guinan strength data.
+Steinberg-Guinan strength complete.
+Material AL 6061-T6 loaded successfully.
+Material Retrieval Complete.
+Retrieving Parts Data .....Complete.
+Transferring Coordinate Systems Complete.
+Transferring Node Information Complete.
+Transferring Material Information .....Complete.
+Checking for Remote Points ....No remote points found.
+Getting Boundary Conditions ....Complete.
+Getting Per Body Controls ....Complete.
+Getting Joint Connections....Complete.
+Getting Joint Loads....Complete.
+Validating Joint Loads....Complete.
+Transferring Mesh ....Complete.
+Transferring Bonded Contacts .....Complete.
+Transferring Contacts ....Complete.
+Transferring Symmetry Conditions ....Complete.
+Transferring Loadcase Data ....Complete.
+Transferring Boundary Conditions ....Complete.
+Transferring Imported External Load ....Complete.
+Transferring Per Body Controls ....Complete.
+Transferring Joints ....Complete.
+Transferring Joint Loads ....Complete.
+Retrieving Tracker Data .....Complete.
+Transferring Named Selections .....Complete.
+Transferring Tracker Data .....Complete.
+Exporting Cycle Zero file .....Complete.
+		AUTODYN PRE-SOLVER SETUP COMPLETE.
+
