@@ -9,7 +9,7 @@ Predictive maintenance based on Digital Twin requires a cutting edge data platfo
 ## Overall framework of Digital Twin with the cloud and edge computing
 This is the conceived implementation framework of digital twin, including machine tool perception data acquisition, storage, analysis and processing based on message queue; machine learning model construction, training, verification, deployment, service and model adaptation and application for specific application scenarios.
 
-<img src="https://github.com/1359246372/digital_twin_for_CNC_machine_tool/blob/master/images/architecture.png" width="100%">
+<img src="https://github.com/1359246372/Digital-Twin-for-CNC-machine-tools/blob/master/images/architecture.png" width="100%">
 
 
 
