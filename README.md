@@ -15,7 +15,7 @@ This is the conceived implementation framework of digital twin, including machin
 
 ## Digital Twin usage 
 1. Hybrid predictive maintenance approach for CNC machine tool driven by Digital Twin
-<img src="https://github.com/1359246372/digital_twin_for_CNC_machine_tool/blob/master/images/Hybrid approach predictive maintenance framework based on DT.png " width="100%">
+<img src="https://github.com/1359246372/Digital-Twin-for-CNC-machine-tools/blob/master/images/Hybrid approach predictive maintenance framework based on DT.png " width="100%">
 Predictive maintenance is an effective method to avoid faults and casualties. Due to less consideration of the status variety and consistency of CNCMT in its life cycle, current methods cannot achieve accurate, timely and intelligent results. To realize reliable predictive maintenance of CNCMT, a hybrid approach driven by Digital Twin is used. With this framework, a hybrid predictive maintenance algorithm based on DT model and DT data is researched. 
 
 ## Implementation and installation
